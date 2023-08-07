@@ -12,7 +12,7 @@ struct HomeView: View {
 						.listRowSeparator(.hidden)
 				}
 				if let repositories = homeVM.repositories {
-					var sortedByMostRecent = repositories.sorted {$0.updated_at > $1.updated_at}
+					let sortedByMostRecent = repositories.sorted {$0.updated_at > $1.updated_at}
 					ForEach(sortedByMostRecent) { repository in
 						NavigationLink {
 							RepositoryDetail(repository: repository)
@@ -31,6 +31,5 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
 	static var previews: some View {
 		HomeView()
-			.environmentObject(HomeViewModel(networkService: Network()))
 	}
 }
